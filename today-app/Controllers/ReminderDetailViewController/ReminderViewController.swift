@@ -9,6 +9,7 @@ import UIKit
 
 class ReminderViewController: UICollectionViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Int, Row>
+    private typealias SnapShot = NSDiffableDataSourceSnapshot<Int, Row>
     
     var reminder: Reminder
     private var dataSource: DataSource!
@@ -32,6 +33,8 @@ class ReminderViewController: UICollectionViewController {
             (collectionView: UICollectionView, indexPath: IndexPath, itemIdentiFier: Row)  in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentiFier)
         }
+        
+        updateSnapShot()
     }
     
     func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, row: Row) {
@@ -41,14 +44,21 @@ class ReminderViewController: UICollectionViewController {
         contentConfiguration.image = row.image
         cell.contentConfiguration = contentConfiguration
         cell.tintColor = .todayPrimaryTint
-        
-        func text(for row: Row) -> String? {
-            switch row {
-            case .date: return reminder.dueDate.dayText
-            case .notes: return reminder.notes
-            case .time: return reminder.dueDate.formatted(date: .omitted, time: .shortened)
-            case .title: return reminder.title
-            }
+    }
+    
+    func text(for row: Row) -> String? {
+        switch row {
+        case .date: return reminder.dueDate.dayText
+        case .notes: return reminder.notes
+        case .time: return reminder.dueDate.formatted(date: .omitted, time: .shortened)
+        case .title: return reminder.title
         }
+    }
+    
+    private func updateSnapShot() {
+        var snapShot = SnapShot()
+        snapShot.appendSections([0])
+        snapShot.appendItems([Row.title, Row.date, Row.time, Row.notes], toSection: 0)
+        dataSource.apply(snapShot)
     }
 }
