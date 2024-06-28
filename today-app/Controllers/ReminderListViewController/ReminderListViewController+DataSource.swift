@@ -19,7 +19,7 @@ extension ReminderListViewController {
         NSLocalizedString("Not completed", comment: "Reminder not completed value")
     }
     
-    func updateSnapShot(reloading ids: [Reminder.ID] = []) {
+    func updateSnapshot(reloading ids: [Reminder.ID] = []) {
         var snapshot = Snapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(Reminder.sampleData.map { $0.id }, toSection: 0)
@@ -55,7 +55,7 @@ extension ReminderListViewController {
         var reminder = reminder(withId: id)
         reminder.isComplete.toggle()
         updateRemider(reminder)
-        updateSnapShot(reloading: [id])
+        updateSnapshot(reloading: [id])
     }
     
     private func doneButtonAccesibilityAction(for reminder: Reminder) -> UIAccessibilityCustomAction {
