@@ -14,6 +14,8 @@ extension ReminderViewController {
         case notes
         case time
         case title
+        case editableDate(Date)
+        case editableContent(String)
         
         var imageName: String? {
             switch self {

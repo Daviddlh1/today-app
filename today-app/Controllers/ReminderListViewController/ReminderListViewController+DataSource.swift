@@ -51,11 +51,25 @@ extension ReminderListViewController {
         cell.backgroundConfiguration = backgroundConfiguration
     }
     
+    func reminder(withId id: Reminder.ID) -> Reminder {
+        let index = reminders.indexOfReminder(withId: id)
+        return reminders[index]
+    }
+    
+    func updateRemider(_ reminder: Reminder) {
+        let index = reminders.indexOfReminder(withId: reminder.id)
+        reminders[index] = reminder
+    }
+    
     func completeReminder(withId id: Reminder.ID) {
         var reminder = reminder(withId: id)
         reminder.isComplete.toggle()
         updateRemider(reminder)
         updateSnapshot(reloading: [id])
+    }
+    
+    func addReminder(_ reminder: Reminder) {
+        reminders.append(reminder)
     }
     
     private func doneButtonAccesibilityAction(for reminder: Reminder) -> UIAccessibilityCustomAction {
@@ -78,13 +92,5 @@ extension ReminderListViewController {
         return UICellAccessory.CustomViewConfiguration(customView: button, placement: .leading(displayed: .always))
     }
     
-    func reminder(withId id: Reminder.ID) -> Reminder {
-        let index = reminders.indexOfReminder(withId: id)
-        return reminders[index]
-    }
     
-    func updateRemider(_ reminder: Reminder) {
-        let index = reminders.indexOfReminder(withId: reminder.id)
-        reminders[index] = reminder
-    }
 }

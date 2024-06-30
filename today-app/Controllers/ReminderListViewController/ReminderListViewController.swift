@@ -25,6 +25,14 @@ class ReminderListViewController: UICollectionViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
         
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didPressAddButton(_:)))
+        addButton.accessibilityLabel = NSLocalizedString("Add reminder", comment: "Add button accesibility label")
+        navigationItem.rightBarButtonItem = addButton
+        
+        if #available(iOS 16, *) {
+            navigationItem.style = .navigator
+        }
+        
         updateSnapshot()
         
         collectionView.dataSource = dataSource
@@ -38,7 +46,10 @@ class ReminderListViewController: UICollectionViewController {
     
     func pushDetailViewForReminder(withId id: Reminder.ID) {
         let reminder = reminder(withId: id)
-        let viewController = ReminderViewController(reminder: reminder)
+        let viewController = ReminderViewController(reminder: reminder) { [weak self] reminder in
+            self?.updateRemider(reminder)
+            self?.updateSnapshot(reloading: [reminder.id])
+        }
         navigationController?.pushViewController(viewController, animated: true)
     }
     
