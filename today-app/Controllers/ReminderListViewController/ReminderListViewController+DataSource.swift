@@ -19,10 +19,11 @@ extension ReminderListViewController {
         NSLocalizedString("Not completed", comment: "Reminder not completed value")
     }
     
-    func updateSnapshot(reloading ids: [Reminder.ID] = []) {
+    func updateSnapshot(reloading idsThatChanged: [Reminder.ID] = []) {
+        let ids = idsThatChanged.filter { id in filteredReminders.contains(where: { $0.id == id })}
         var snapshot = Snapshot()
         snapshot.appendSections([0])
-        snapshot.appendItems(Reminder.sampleData.map { $0.id }, toSection: 0)
+        snapshot.appendItems(filteredReminders.map { $0.id }, toSection: 0)
         if !ids.isEmpty {
             snapshot.reloadItems(ids)
         }
@@ -42,8 +43,8 @@ extension ReminderListViewController {
         doneButtonConfiguration.tintColor = .todayListCellDoneButtonTint
         cell.accessibilityCustomActions = [doneButtonAccesibilityAction(for: reminder)]
         cell.accessibilityValue = reminder.isComplete
-            ? reminderCompletedValue
-            : reminderNotCompletedValue
+        ? reminderCompletedValue
+        : reminderNotCompletedValue
         cell.accessories = [.customView(configuration: doneButtonConfiguration), .disclosureIndicator(displayed: .always)]
         
         var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
@@ -72,6 +73,11 @@ extension ReminderListViewController {
         reminders.append(reminder)
     }
     
+    func deleteReminder(withId id: Reminder.ID) {
+        let index = reminders.indexOfReminder(withId: id)
+        reminders.remove(at: index)
+    }
+    
     private func doneButtonAccesibilityAction(for reminder: Reminder) -> UIAccessibilityCustomAction {
         let name = NSLocalizedString("Togle completion", comment: "Reminder done button accesibility label")
         let action = UIAccessibilityCustomAction(name: name) { [weak self] action in
@@ -91,6 +97,4 @@ extension ReminderListViewController {
         button.setImage(image, for: .normal)
         return UICellAccessory.CustomViewConfiguration(customView: button, placement: .leading(displayed: .always))
     }
-    
-    
 }
