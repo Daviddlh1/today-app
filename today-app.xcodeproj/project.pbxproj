@@ -31,6 +31,8 @@
 		635FAFCC2C2A4E3000881AD9 /* Date+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635FAFCB2C2A4E3000881AD9 /* Date+Today.swift */; };
 		635FAFCF2C2A523500881AD9 /* ReminderListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635FAFCE2C2A523500881AD9 /* ReminderListViewController+DataSource.swift */; };
 		636589272C3336C700D29ECF /* RemiderListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636589262C3336C700D29ECF /* RemiderListStyle.swift */; };
+		636589292C34B9D400D29ECF /* ProgressHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636589282C34B9D400D29ECF /* ProgressHeaderView.swift */; };
+		6365892B2C34CB6F00D29ECF /* CAGradientLayer+ListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365892A2C34CB6F00D29ECF /* CAGradientLayer+ListStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		635FAFCB2C2A4E3000881AD9 /* Date+Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Today.swift"; sourceTree = "<group>"; };
 		635FAFCE2C2A523500881AD9 /* ReminderListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderListViewController+DataSource.swift"; sourceTree = "<group>"; };
 		636589262C3336C700D29ECF /* RemiderListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemiderListStyle.swift; sourceTree = "<group>"; };
+		636589282C34B9D400D29ECF /* ProgressHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHeaderView.swift; sourceTree = "<group>"; };
+		6365892A2C34CB6F00D29ECF /* CAGradientLayer+ListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+ListStyle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				635FAFC92C2A41EE00881AD9 /* Reminder.swift */,
+				6365892A2C34CB6F00D29ECF /* CAGradientLayer+ListStyle.swift */,
 				635FAFCB2C2A4E3000881AD9 /* Date+Today.swift */,
 				636589262C3336C700D29ECF /* RemiderListStyle.swift */,
 			);
@@ -223,6 +228,7 @@
 				635FAF9A2C2A3F7200881AD9 /* ReminderListViewController.swift */,
 				635FAFCE2C2A523500881AD9 /* ReminderListViewController+DataSource.swift */,
 				634029932C2B86B800C99D50 /* ReminderDoneButton.swift */,
+				636589282C34B9D400D29ECF /* ProgressHeaderView.swift */,
 				634029952C2B883F00C99D50 /* ReminderListViewController+Actions.swift */,
 			);
 			path = ReminderListViewController;
@@ -364,6 +370,7 @@
 				635FAF9B2C2A3F7200881AD9 /* ReminderListViewController.swift in Sources */,
 				635FAFCC2C2A4E3000881AD9 /* Date+Today.swift in Sources */,
 				635FAF972C2A3F7200881AD9 /* AppDelegate.swift in Sources */,
+				636589292C34B9D400D29ECF /* ProgressHeaderView.swift in Sources */,
 				6352A07D2C2E183B001BAA9C /* ReminderViewController+Section.swift in Sources */,
 				635103432C30C8F20051C5D2 /* UIContentConfiguration+Stateless.swift in Sources */,
 				6351033C2C30C0600051C5D2 /* ReminderViewController+CellConfiguration.swift in Sources */,
@@ -371,6 +378,7 @@
 				635FAF992C2A3F7200881AD9 /* SceneDelegate.swift in Sources */,
 				634029992C2B91F500C99D50 /* ReminderViewController.swift in Sources */,
 				6351033F2C30C4620051C5D2 /* UIView+PinnedSubview.swift in Sources */,
+				6365892B2C34CB6F00D29ECF /* CAGradientLayer+ListStyle.swift in Sources */,
 				635103452C30D5F20051C5D2 /* TextViewContentView.swift in Sources */,
 				6340299B2C2B94EA00C99D50 /* ReminderViewController+Row.swift in Sources */,
 				635FAFCA2C2A41EE00881AD9 /* Reminder.swift in Sources */,
